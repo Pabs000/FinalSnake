@@ -1,6 +1,6 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-class SnakePart{
+class Snake{
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -10,7 +10,7 @@ class SnakePart{
 
 //GameBOARD--------------------------------------------------------
 let Speed = 10;
-let TileCount = 40;
+let TileCount = 20;
 let TileSize = canvas.width / TileCount;
 
 //Sizing of the snake//---------------------------------------------
@@ -69,7 +69,6 @@ function DestroyGameReset() {
   let GameOver = false;
   if (VelocityY === 0 && VelocityX === 0) {
     return false;
-    console.log{'BETTER LUCK NEXT TIME ARAM!!!'}
   }
   if (HeadX < 0) {
     GameOver = true;
@@ -86,7 +85,7 @@ function DestroyGameReset() {
 
 //loop snake body----
 for (let i = 0; i< SnakeItself.length; i++)
- {let part = snakeParts[i];
+ {let part = SnakeItself[i];
 
 if (part.x === HeadX && part.y === HeadY) {
       GameOver = true;
@@ -144,39 +143,34 @@ function SquareCollection()
                     TailLength++;
                     Score++;}}
 
-document.body.addEventListener("keydown", keyDown);
-function keyDown(event) {
-  //up
-  if (event.keyCode == 38 || event.keyCode == 87) {
-    //87 is w
-    if (inputsYVelocity == 1) return;
-    inputsYVelocity = -1;
-    inputsXVelocity = 0;
-  }
-
-  //down
-  if (event.keyCode == 40 || event.keyCode == 83) {
-    // 83 is s
-    if (inputsYVelocity == -1) return;
-    inputsYVelocity = 1;
-    inputsXVelocity = 0;
-  }
-
-  //left
-  if (event.keyCode == 37 || event.keyCode == 65) {
-    // 65 is a
-    if (inputsXVelocity == 1) return;
-    inputsYVelocity = 0;
-    inputsXVelocity = -1;
-  }
-
-  //right
-  if (event.keyCode == 39 || event.keyCode == 68) {
-    //68 is d
-    if (inputsXVelocity == -1) return;
-    inputsYVelocity = 0;
-    inputsXVelocity = 1;
-  }
-}
-
-drawGame();
+                    document.body.addEventListener("keyup", keyUp);
+                    //up
+                    function keyUp(event)
+                    {
+                        if (event.keyCode == 38 || event.keyCode == 87) {
+                            if (inputsYVelocity == 1) return;
+                            inputsVelocityY = -1;
+                            inputsVelocityX = 0;
+                          }
+                          //down
+                          if (event.keyCode == 40 || event.keyCode == 83) {
+                            if (inputsYVelocity == -1) return;
+                            inputsYVelocity = 1;
+                            inputsXVelocity = 0;
+                          }
+                          //left
+                          if (event.keyCode == 37 || event.keyCode == 65) {
+                            if (inputsXVelocity == 1) return;
+                            inputsYVelocity = 0;
+                            inputsXVelocity = -1;
+                          }
+                          //right
+                          if (event.keyCode == 39 || event.keyCode == 68) {
+                    
+                            if (inputsXVelocity == -1) return;
+                            inputsYVelocity = 0;
+                            inputsXVelocity = 1;
+                          }
+                        }
+                    // keycodes (W,A,S,D) (87,65,83,68)/////////(UP,RIGHT,DOWN,LEFT)   (38,39,40,37)
+                    drawGame();
