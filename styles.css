@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    padding: 5px;
+    border: 1px color: black;
+    justify-content: center;
+    align-items: center;
+}
+H1 {
+    text-Align:center;
+            text-size: 12%;
+            color:lightsteelblue;
+            margin: 2px, 2px, 2px, 2px;
+            shadow::backdrop;
+            font: 1em sans-serif;
+}
+canvas{
+    margin: 5px gray;
+    align-self: ;
+
+    box-shadow: gray 10px 25px 10px 25px;
+}
