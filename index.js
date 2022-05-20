@@ -114,10 +114,10 @@ function DrawScore() {
     ctx.fillText("KEEP IT GOING :) -SCORE- " + Score, canvas.width - 35, 5);
   }
 //Game over Display
-if (GameOver) {
+if (GameOver) 
+{
 ctx.fillStyle = "gray";
 ctx.font = "70px Stylus";
-  return GameOver;
 }
 function GameBoard() {
   ctx.fillStyle = "black";
