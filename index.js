@@ -1,5 +1,5 @@
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+const snakeboard = document.getElementById("gameCanvas");
+const snakeboard_ctx = gameCanvas.getContext("2d");
 class SnakeIt 
 {
 constructor(x, y) {
