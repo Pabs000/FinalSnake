@@ -123,10 +123,9 @@ function GameBoard() {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-
 //Snake Size and loop for increasing size on GB.(GameBoard)
 function DrawSnake() {
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "Red";
   for (let i = 0; i < SnakeItself.length; i++) 
 {let part = snakeParts[i];
 ctx.fillRect(part.x * TileCount, part.y * TileCount, TileSize, TileSize);}
@@ -134,13 +133,15 @@ ctx.fillRect(part.x * TileCount, part.y * TileCount, TileSize, TileSize);}
   SnakeItself.push(new SnakePart(HeadX, HeadY));
   while (SnakeItself.length > TailLength) 
   {SnakeItself.shift}//Keep Sizing going
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "White";
   ctx.fillRect(HeadX*TileCount, HeadY*TileCount,TileSize,TileSize);
 }
 function changeSnakePosition() 
 {HeadX =HeadX + VelocityX;
-  HeadY = HeadY +VelocityY;}
-function DrawSquare() 
+  HeadY =HeadY +VelocityY;}
+
+
+  function DrawSquare() 
 {
   ctx.fillStyle = "Green";
   ctx.fillRect(SquareX * TileCount, SquareY * TileCount, TileSize, TileSize);
@@ -191,6 +192,7 @@ function SquareCollection()
   GameBoard();
   SquareCollection();
   DrawSquare();
+  changeSnakePosition()
   DrawSnake();
   DrawScore();
   GameOver();
