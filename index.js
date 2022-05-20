@@ -1,17 +1,16 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-class Snake{
+class SnakeIt 
+{
+constructor(x, y) {
+this.x = x;
+this.y = y;     }}
 
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-}
 
 //GameBOARD--------------------------------------------------------
 let Speed = 10;
 let TileCount = 20;
-let TileSize = canvas.width / TileCount;
+let TileSize = canvas.width / TileCount -2;
 
 //Sizing of the snake//---------------------------------------------
 let HeadX = 12;
@@ -35,37 +34,52 @@ let Score = 0;
 
 
 
-function DrawGame() {
+function DrawGame() 
+{
 VelocityX = InputsVelocityX;
 VelocityY = InputsVelocityY;
+
+
+
 //AddingGameOver for Replay
 DestroyGameReset();
-let Result = isGameOver();
-  if(Result) 
-  {return;}
-  SquareBoard();
+
+let Result = GameOver();
+  if(Result) {
+      return;
+  }
+
+
+
+  GameBoard();
   SquareCollection();
   DrawSquare();
   DrawSnake();
   DrawScore();
+  GameOver();
+
+
+
 //Control  SCORE----- Using Speed Increase
-if (Score > 1) {
+if (Score > 5) {
     Speed = 10;
 } 
 if (Score > 7) {
-    Speed = 14;
+    Speed = 12;
 }
-if (Score > 10) {
-    Speed = 16
+if (Score > 13) {
+    Speed = 15
 }
-if (Score > 15) {
-    Speed = 18;
+if (Score > 18) {
+    Speed = 20;
 }
 //Speed Timer Divide per set speed.
-setTimeout(DrawGame,750/Speed); }
+setTimeout(DrawGame,1000/Speed); }
+function DestroyGameReset() 
 
 
-function DestroyGameReset() {
+
+{
   let GameOver = false;
   if (VelocityY === 0 && VelocityX === 0) {
     return false;
@@ -84,7 +98,7 @@ function DestroyGameReset() {
 
 
 //loop snake body----
-for (let i = 0; i< SnakeItself.length; i++)
+for (let i = 0; i<SnakeItself.length; i++)
  {let part = SnakeItself[i];
 
 if (part.x === HeadX && part.y === HeadY) {
@@ -97,7 +111,7 @@ if (part.x === HeadX && part.y === HeadY) {
 function DrawScore() {
     ctx.fillStyle = "RED";
     ctx.font = "30px Roman";
-    ctx.fillText("KEEP IT GOING :)   -SCORE- " + Score, canvas.width - 35, 5);
+    ctx.fillText("KEEP IT GOING :) -SCORE- " + Score, canvas.width - 35, 5);
   }
 //Game over Display
 if (GameOver) {
@@ -105,7 +119,7 @@ ctx.fillStyle = "gray";
 ctx.font = "70px Stylus";
   return GameOver;
 }
-function SquareBoard() {
+function GameBoard() {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -173,4 +187,10 @@ function SquareCollection()
                           }
                         }
                     // keycodes (W,A,S,D) (87,65,83,68)/////////(UP,RIGHT,DOWN,LEFT)   (38,39,40,37)
-                    drawGame();
+                  
+  GameBoard();
+  SquareCollection();
+  DrawSquare();
+  DrawSnake();
+  DrawScore();
+  GameOver();
