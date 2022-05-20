@@ -1,12 +1,12 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 class Snake{
+
   constructor(x, y) {
     this.x = x;
     this.y = y;
   }
 }
-
 
 //GameBOARD--------------------------------------------------------
 let Speed = 10;
@@ -149,14 +149,14 @@ function SquareCollection()
                     {
                         if (event.keyCode == 38 || event.keyCode == 87) {
                             if (inputsYVelocity == 1) return;
-                            inputsVelocityY = -1;
-                            inputsVelocityX = 0;
+                            InputsVelocityY = -1;
+                            InputsVelocityX = 0;
                           }
                           //down
                           if (event.keyCode == 40 || event.keyCode == 83) {
-                            if (inputsYVelocity == -1) return;
-                            inputsYVelocity = 1;
-                            inputsXVelocity = 0;
+                            if (InputsYVelocity == -1) return;
+                            InputsYVelocity = 1;
+                            InputsXVelocity = 0;
                           }
                           //left
                           if (event.keyCode == 37 || event.keyCode == 65) {
